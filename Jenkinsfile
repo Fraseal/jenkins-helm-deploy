@@ -31,10 +31,7 @@ pipeline {
                 }
             }
         }
-
-    }
-}
-
+    
         stage('Build on kubernetes'){    // Deploying app on kubernetes using helm
         steps {
             withKubeConfig([credentialsId: 'kubeconfig']) {  // Using kubeconfig credentials to access kubernetes cluster
@@ -46,6 +43,8 @@ pipeline {
         }                     // Using helm upgrade command to deploy the application on kubernetes cluster, setting the image repository and tag to the one we just built and pushed to docker hub
     }   // The above command will deploy the application on kubernetes cluster using helm chart, if the release already exists it will upgrade it, otherwise it will install it as a new release.
 }
+
+
 
 }
 }
