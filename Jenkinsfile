@@ -44,7 +44,7 @@ pipeline {
                 sh 'pwd'
                 sh '/usr/local/bin/helm upgrade --install petclinic-app petclinic --set image.repository=aj085/petclinic --set image.tag=${BUILD_NUMBER}'
         }                     // Using helm upgrade command to deploy the application on kubernetes cluster, setting the image repository and tag to the one we just built and pushed to docker hub
-    }
+    }   // The above command will deploy the application on kubernetes cluster using helm chart, if the release already exists it will upgrade it, otherwise it will install it as a new release.
 }
 
 }
